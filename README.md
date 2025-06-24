@@ -18,8 +18,8 @@ Below is the Pareto analysis showing the trade-off between reasoning length comp
 *<p align="center">Figure 1: Pareto analysis of the Efficacy-Efficiency trade-off.</p>*
 
 ## 📝Contents
+- 📝[Contents](#-Contents)
 - 🚀[News](#-news)
-- 📝 [Contents](#-Contents)
 - 📖[Introduction](#-introduction)
 - 📊[Performance](#-performance)
 - ⚙️[Implementation](#️-implementation)
@@ -40,10 +40,8 @@ To address this, we propose **LC-R1**, a post-training method based on Group Rel
 2.  A **Compress Reward** to specifically penalize "invalid thinking" and terminate the reasoning process once the correct answer is found.
 
 This approach effectively balances **Brevity** (eliminating redundancy) and **Sufficiency** (preserving essential reasoning steps). The diagram below illustrates our method's pipeline.
-<p align="center">
-<img src="./assets/method.png" width="700"/>
-</p>
 
+![LC-R1 Method](./assets/method.png)
 *<p align="center">Figure 2: The LC-R1 training pipeline.</p>*
 
 
@@ -55,10 +53,7 @@ The results demonstrate that LC-R1 consistently outperforms other compression me
 
 Below are the main results from our experiments.
 
-<p align="center">
-<img src="./assets/table.png" width="700"/>
-</p>
-
+![Main Results](./assets/table.png)
 *<p align="center">Table 1: Main experimental results on accuracy and sequence length.</p>*
 
 
