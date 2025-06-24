@@ -10,3 +10,4 @@ dataset/
 extractor_model/
 scripts/lcr1_7B copy.sh
 README copy.md
+    __pycache__/
