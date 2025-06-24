@@ -1,6 +1,5 @@
 
-
-# Optimizing Length Compression in Large Reasoning Models (LC-R1)
+<h1 align="center">Optimizing Length Compression in Large Reasoning Models</h1>
 
 <p align="center">
 <strong><a href="https://arxiv.org/abs/2506.14755">📃Paper</a> | <a href="https://huggingface.co/collections/zx10086/lc-r1-685a7f3a33f3ba17f2c493b8">🤗Models & Datasets Repo</a></strong>
@@ -18,13 +17,19 @@ Below is the Pareto analysis showing the trade-off between reasoning length comp
 ![Pareto Analysis](./assets/pareto.png)
 *<p align="center">Figure 1: Pareto analysis of the Efficacy-Efficiency trade-off.</p>*
 
----
+## 📝Contents
+- 🚀[News](#-news)
+- 📝 [Contents](#-Contents)
+- 📖[Introduction](#-introduction)
+- 📊[Performance](#-performance)
+- ⚙️[Implementation](#️-implementation)
+- 🙏[Acknowledgements](#-acknowledgements)
+- ⭐[Citation](#-citation)
 
 ## 🚀 News
 
 * **[06/2025]** We are excited to release the code, models, and datasets for the paper "Optimizing Length Compression in Large Reasoning Models"!
 
----
 
 ## 📖 Introduction
 
@@ -39,7 +44,6 @@ This approach effectively balances **Brevity** (eliminating redundancy) and **Su
 ![LC-R1 Method](./assets/method.png)
 *<p align="center">Figure 2: The LC-R1 training pipeline.</p>*
 
----
 
 ## 📊 Performance
 
@@ -52,7 +56,6 @@ Below are the main results from our experiments.
 ![Main Results](./assets/table.png)
 *<p align="center">Table 1: Main experimental results on accuracy and sequence length.</p>*
 
----
 
 ## ⚙️ Implementation
 
@@ -111,12 +114,18 @@ bash scripts/lcr1_1.5B.sh
 
 **Customizing Training:**
 
-  * To modify training parameters (e.g., learning rate, batch size), edit the configuration files located in `scripts/train.py`.
-  * To modify the parameters of deepspeed, modify the `scripts/accelerate_configs/` file.
+  * To modify training parameters (e.g., learning rate, batch size), edit the `scripts/train.py` file.
+  * To modify the parameters of deepspeed, edit the configuration files located in `scripts/accelerate_configs/`.
 
------
+## 🙏 Acknowledgements
 
-## 📝 Citation
+Our work leverages and benefits from the following excellent open-source projects. We express our sincere gratitude to their developers and contributors.
+  * [TRL](https://github.com/huggingface/trl) is a flexible framework for RL training.
+  * [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) is a reliable framework for tuning models.
+
+
+
+## ⭐ Citation
 
 If you find the content of this project helpful, please cite our paper as follows:
 
