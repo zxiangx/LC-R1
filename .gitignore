@@ -1,3 +1,12 @@
 cli
 save_model
 nohup.out
+.gitignore
+lc_r1.egg-info
+temp
+test_dataset
+scripts/log
+dataset/
+extractor_model/
+scripts/lcr1_7B copy.sh
+README copy.md
