@@ -2,6 +2,7 @@
 
 MODEL_PATH=Your_model_path  # replace to your own model path
 SAVE_PATH=Your_save_path  # replace to your own save path
+CONFIG_PATH=accelerate_configs/deepspeed_zero3.yaml
 
 if [[ -z "$MODEL_PATH" || "$MODEL_PATH" == "Your_model_path" ]]; then
     echo "Error: MODEL_PATH is not set correctly"
@@ -17,12 +18,12 @@ if ! nvidia-smi | grep -q "CUDA Version"; then
     exit 1
 fi
 
-if ! command -v vllm-serve &> /dev/null; then
-    echo "Error: vllm-serve not found. Please install vllm."
+if ! command -v trl &> /dev/null; then
+    echo "Error: trl command not found. Please install trl."
     exit 1
 fi
 
-if [[ ! -f "accelerate_configs/deepspeed_zero3.yaml" ]]; then
+if [[ ! -f "$CONFIG_PATH" ]]; then
     echo "Error: DeepSpeed config file not found"
     exit 1
 fi
@@ -33,7 +34,7 @@ mkdir -p log
 # run vllm-serve
 export CUDA_VISIBLE_DEVICES=3
 fuser -k 8000/tcp
-vllm-serve --model "$MODEL_PATH" --port 8000 > log/vllm.log 2>&1 &
+trl vllm-serve --model "$MODEL_PATH" --port 8000 > log/vllm.log 2>&1 &
 VLLM_PID=$!
 echo "vLLM server PID: $VLLM_PID"
 
@@ -42,8 +43,8 @@ if ! curl -s http://localhost:8000/health > /dev/null; then
     echo "Warning: vLLM server may not have started. Check log/vllm.log"
 fi
 
-accelerate launch train.py \
-    --config_file accelerate_configs/deepspeed_zero3.yaml \
+accelerate launch --config_file "$CONFIG_PATH" \
+    train.py \
     --save_path "$SAVE_PATH" \
     --model_path "$MODEL_PATH" \
     --lr 2e-6 \
