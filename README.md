@@ -28,7 +28,7 @@ Below is the Pareto analysis showing the trade-off between reasoning length comp
 
 ## 🚀 News
 
-* **[06/2025]** We are excited to release the code, models, and datasets for the paper "Optimizing Length Compression in Large Reasoning Models"!
+* **[10/2025]** We are excited to release the code, models, and datasets for the paper "Optimizing Length Compression in Large Reasoning Models"!
 
 
 ## 📖 Introduction

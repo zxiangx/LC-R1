@@ -33,7 +33,12 @@ trl vllm-serve --model "$MODEL_PATH" --port 8000 > log/vllm.log 2>&1 &
 VLLM_PID=$!
 echo "vLLM server PID: $VLLM_PID"
 
-accelerate launch --config_file CONFIG_PATH \
+sleep 5
+if ! curl -s http://localhost:8000/health > /dev/null; then
+    echo "Warning: vLLM server may not have started. Check log/vllm.log"
+fi
+
+accelerate launch --config_file "$CONFIG_PATH" \
     train.py \
     --save_path "$SAVE_PATH" \
     --model_path "$MODEL_PATH" \
